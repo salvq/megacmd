@@ -1,6 +1,25 @@
 version: '3'
 
 services:
+  megacmd-camera:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-camera
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/Camera:/backup/Camera/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
   megacmd-documents:
     image: salvq/megacmd:1.5.0
     container_name: megacmd-documents
@@ -12,7 +31,7 @@ services:
       - INTERVAL=1440
       - MEGACMD=put -c /backup/* /
     volumes:
-      - /share/Download/Documents:/backup/Documents/:ro
+      - /share/Download/Rasto/Documents:/backup/Documents/:ro
       - /share/Container/megacmd:/root/.megaCmd/
       - /etc/localtime:/etc/localtime:ro
     logging:
@@ -20,8 +39,102 @@ services:
       options:
         syslog-address: "tcp://192.168.1.106:514"
         tag: "{{.Name}}/{{.ImageName}}"
-        
-   megacmd-photo:
+  megacmd-drone:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-drone
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/Drone:/backup/Drone/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
+  megacmd-fariocon:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-fariocon
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/Fariocon:/backup/Fariocon/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
+  megacmd-home:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-home
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/Home_Automation:/backup/Home_Automation/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
+   megacmd-iphoner:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-iphoner
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/iPhone_upload:/backup/iPhone_upload/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
+   megacmd-iphonek:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-photo
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Katka/_iphone_upload:/backup/Katka_iphone_upload/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"  
+  megacmd-photo:
     image: salvq/megacmd:1.5.0
     container_name: megacmd-photo
     restart: unless-stopped
@@ -40,4 +153,22 @@ services:
       options:
         syslog-address: "tcp://192.168.1.106:514"
         tag: "{{.Name}}/{{.ImageName}}"       
-        
+   megacmd-programs:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-programs
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Programs:/backup/Programs/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"       
