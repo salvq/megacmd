@@ -13,7 +13,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Camera:/backup/Camera/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -32,7 +32,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Documents:/backup/Documents/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -51,7 +51,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Drone:/backup/Drone/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -70,7 +70,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Fariocon:/backup/Fariocon/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -89,7 +89,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Home_Automation:/backup/Home_Automation/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -108,7 +108,7 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/iPhone_upload:/backup/iPhone_upload/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -127,16 +127,16 @@ services:
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Katka/_iphone_upload:/backup/Katka_iphone_upload/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://192.168.1.106:514"
         tag: "{{.Name}}/{{.ImageName}}"  
-  megacmd-photo:
+  megacmd-photos:
     image: salvq/megacmd:1.5.0
-    container_name: megacmd-photo
+    container_name: megacmd-photos
     restart: unless-stopped
     network_mode: host
     environment:
@@ -145,8 +145,8 @@ services:
       - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
-      - /share/Download/Photo:/backup/Photo/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Download/Rasto/Photos:/backup/Photos/:ro
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
@@ -164,11 +164,11 @@ services:
       - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
-      - /share/Download/Programs:/backup/Programs/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Download/Rasto/Programs:/backup/Programs/:ro
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://192.168.1.106:514"
-        tag: "{{.Name}}/{{.ImageName}}"       
+        tag: "{{.Name}}/{{.ImageName}}"
