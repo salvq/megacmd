@@ -33,6 +33,8 @@ For a list of program commands and user guide, visit https://github.com/meganz/M
 
 ## Usage
 
+It is recommended to use sessionID instead of username and passowrd, see below how to create sessionID
+
 To run upload every day at 1:30 AM, you can register application via QNAP UI (Create Application in ContainerStation using docker-compose.yaml)
 
 ```
@@ -85,20 +87,28 @@ services:
 
 To generate a session id, follow below steps:
 
-1.) Install qpkg megacmd, use app center in QTS or download and install https://download.qnap.com/QPKG/MEGAcmd_1.4.0_x86_64.zip
+1.) Install qpkg megacmd
 
-2.) ssh to qnap and run commands (adjust export path if needed)
+- Use app center in QTS or install manually by downloading from https://download.qnap.com/QPKG/MEGAcmd_1.4.0_x86_64.zip
 
-3.) Copy/paste sessionid to docker-compose file
-
-4.) Logout from mega-cmd and keep session active
-
+2.) ssh to qnap and set PATH (adjust path if needed / when installed in different folder)
 ```
 [/share/CE_CACHEDEV1_DATA] # export PATH=/share/CE_CACHEDEV1_DATA/.qpkg/MEGAcmd:$PATH
+```
+3.) Initiate mega-cmd
+```
 [/share/CE_CACHEDEV1_DATA] # mega-cmd
+```
+4.) Login to mega cloud
+```
 MEGA CMD> login username@username.com password
+```
+5.) Copy/paste sessionid for docker-compose file
+```
 username@username.com:/$ session
 Your (secret) session is: YOURSESSIONID
+```
+4.) Logout from mega-cmd and keep session active
+```
 username@username.com:/$ logout --keep-session
-exit
 ```
