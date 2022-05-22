@@ -8,6 +8,14 @@ Inspired by https://github.com/Cossey/docker/tree/master/megacmd
 
 * linux/amd64
 
+## Prerequisites
+
+Create folder `megacmd` and empty file `megacmd.cfg` within that folder, for example `/share/Container/megacmd/megacmd.cfg`
+
+File `megacmd.cfg` stores configuration information such as download and/or upload speed. 
+
+Once you limit your upload speed to 640000 B/s in running container via `mega-speedlimit -u 640000`, it will be written to cfg file and used by any other container which is linked to this file.
+
 ## Container Configuration
 
 | Name     | Description                                                                                                 |
@@ -24,10 +32,6 @@ If the `BEGIN` command is set, then the `INTERVAL` will be set to 1440 (one day)
 For a list of program commands and user guide, visit https://github.com/meganz/MEGAcmd/blob/master/UserGuide.md
 
 ## Usage
-
-Create folder `megacmd`, empty file `megacmd.cfg`, for example `/share/Container/megacmd/megacmd.cfg`
-
-File `megacmd.cfg` stores configuration information such as download speed, once you set the download or upload speed in running container via `mega-speedlimit -u 640000`, it will be written and used by any other container which is linked to this file.
 
 To run upload every day at 1:30 AM, you can register application via QNAP UI (Create Application in ContainerStation using docker-compose.yaml)
 
