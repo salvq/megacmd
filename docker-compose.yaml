@@ -9,7 +9,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Camera:/backup/Camera/:ro
@@ -28,7 +28,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Documents:/backup/Documents/:ro
@@ -47,7 +47,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Drone:/backup/Drone/:ro
@@ -66,7 +66,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Fariocon:/backup/Fariocon/:ro
@@ -85,7 +85,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/Home_Automation:/backup/Home_Automation/:ro
@@ -104,7 +104,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Rasto/iPhone_upload:/backup/iPhone_upload/:ro
@@ -123,7 +123,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Katka/_iphone_upload:/backup/Katka_iphone_upload/:ro
@@ -142,7 +142,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Photo:/backup/Photo/:ro
@@ -161,7 +161,7 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
       - /share/Download/Programs:/backup/Programs/:ro
