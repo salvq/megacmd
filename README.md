@@ -25,7 +25,9 @@ For a list of program commands and user guide, visit https://github.com/meganz/M
 
 ## Usage
 
-Create folder `megacmd` in ContainerStation folder, for example `/share/Container/megacmd`
+Create folder `megacmd`, empty file `megacmd.cfg`, for example `/share/Container/megacmd/megacmd.cfg`
+
+File `megacmd.cfg` stores configuration information such as download speed, once you set the download or upload speed in running container via `mega-speedlimit -u 640000`, it will be written and used by any other container which is linked to this file.
 
 To run upload every day at 1:30 AM, you can register application via QNAP UI (Create Application in ContainerStation using docker-compose.yaml)
 
@@ -33,6 +35,25 @@ To run upload every day at 1:30 AM, you can register application via QNAP UI (Cr
 version: '3'
 
 services:
+  megacmd-camera:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-camera
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=10080
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Rasto/Camera:/backup/Camera/:ro
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
   megacmd-documents:
     image: salvq/megacmd:1.5.0
     container_name: megacmd-documents
@@ -41,37 +62,17 @@ services:
     environment:
       - SESSION=YOURSESSIONID
       - BEGIN=0130
-      - INTERVAL=1440
+      - INTERVAL=10080
       - MEGACMD=put -c /backup/* /
     volumes:
-      - /share/Download/Documents:/backup/Documents/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
+      - /share/Download/Rasto/Documents:/backup/Documents/:ro
+      - /share/Container/megacmd/megacmd.cfg:/root/.megaCmd/megacmd.cfg
       - /etc/localtime:/etc/localtime:ro
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://192.168.1.106:514"
         tag: "{{.Name}}/{{.ImageName}}"
-        
-   megacmd-photo:
-    image: salvq/megacmd:1.5.0
-    container_name: megacmd-photo
-    restart: unless-stopped
-    network_mode: host
-    environment:
-      - SESSION=YOURSESSIONID
-      - BEGIN=0130
-      - INTERVAL=1440
-      - MEGACMD=put -c /backup/* /
-    volumes:
-      - /share/Download/Photo:/backup/Photo/:ro
-      - /share/Container/megacmd:/root/.megaCmd/
-      - /etc/localtime:/etc/localtime:ro
-    logging:
-      driver: "syslog"
-      options:
-        syslog-address: "tcp://192.168.1.106:514"
-        tag: "{{.Name}}/{{.ImageName}}"       
         
 ```
 
