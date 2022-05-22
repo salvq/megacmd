@@ -2,6 +2,8 @@
 
 This is a container for the megacmd tool. Designed with convenience functions, intended to use for backing up data a regular intervals.
 
+Inspired by https://github.com/Cossey/docker/tree/master/megacmd
+
 ## Supported Platforms
 
 * linux/amd64
