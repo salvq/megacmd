@@ -1,1 +1,43 @@
+version: '3'
 
+services:
+  megacmd-documents:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-documents
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Documents:/backup/Documents/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"
+        
+   megacmd-photo:
+    image: salvq/megacmd:1.5.0
+    container_name: megacmd-photo
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - SESSION=YOURSESSIONID
+      - BEGIN=0130
+      - INTERVAL=1440
+      - MEGACMD=put -c /backup/* /
+    volumes:
+      - /share/Download/Photo:/backup/Photo/:ro
+      - /share/Container/megacmd:/root/.megaCmd/
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.1.106:514"
+        tag: "{{.Name}}/{{.ImageName}}"       
+        
