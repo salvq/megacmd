@@ -39,7 +39,7 @@ For a list of program commands and user guide, visit https://github.com/meganz/M
 
 It is recommended to use sessionID instead of username and passowrd, see below how to create sessionID
 
-To run upload every day at 1:30 AM, you can register application via QNAP UI (Create Application in ContainerStation using docker-compose.yaml)
+To run upload every week at 1:30 AM, you can register an application via QNAP UI (Create Application in ContainerStation using docker-compose.yaml) or just run command in shell in folder with all the files `[~] # docker-compose up -d`
 
 ```
 version: '3'
