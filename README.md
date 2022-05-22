@@ -1,6 +1,10 @@
 # Mega.nz megacmd for QNAP servers
 
-This is a container for the megacmd tool. Designed with convenience functions, intended to use for backing up data a regular intervals.
+This is a container for the megacmd tool. Designed with convenience functions, intended to use for backing up data in regular intervals.
+
+Logic used here is to run several containers in paralel i.e., each container with different folder. This way, you can speed up not the data upload of course but decrease time to compare local files list vs. cloud file list.
+
+Note: you may also use only 1 container with all the backup folder(s) within a container but his will take much longer as all the folders will be done in sequence rather than in paralel.
 
 Inspired by https://github.com/Cossey/docker/tree/master/megacmd
 
@@ -10,7 +14,7 @@ Inspired by https://github.com/Cossey/docker/tree/master/megacmd
 
 ## Prerequisites
 
-Create folder `megacmd` and empty file `megacmd.cfg` within that folder, for example `/share/Container/megacmd/megacmd.cfg`
+Create folder `megacmd` and an empty file `megacmd.cfg` within that folder, for example `/share/Container/megacmd/megacmd.cfg`
 
 File `megacmd.cfg` stores configuration information such as download and/or upload speed. 
 
