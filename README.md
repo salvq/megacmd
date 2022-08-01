@@ -2,9 +2,9 @@
 
 This is a container for the megacmd tool. Designed with convenience functions, intended to use for backing up data in regular intervals.
 
-Logic used here is to run several containers in paralel i.e., each container with different folder. This way, you can speed up not the data upload of course but decrease time to compare local files list vs. cloud file list.
+Logic used here is to run several containers in paralel i.e., each container with different folder. This way, you can speed up not the data upload of course but decrease time to compare local files list vs. cloud file list. The docker-compose.yml below upload data from 2 folders in paralel: Camera and Documents.
 
-Note: you may also use only 1 container with all the backup folder(s) within a container but his will take much longer as all the folders will be done in sequence rather than in paralel.
+Note: you may also use only 1 container with all the backup folder(s) within a container but his will take much longer as all the folders will be done in sequence rather than in paralel as an example.
 
 Inspired by https://github.com/Cossey/docker/tree/master/megacmd
 
